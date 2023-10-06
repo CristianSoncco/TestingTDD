@@ -10,5 +10,11 @@ import {expect} from 'chai';
             const year = getYear();
             expect(year).to.be.a('number');
         })
+
+        it('Devuelve el año en curso',()=>{
+            const myYear = new Date().getFullYear();
+            const year = getYear();
+            expect(year).equal(myYear);
+        })        
     });
  });
