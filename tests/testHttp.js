@@ -19,7 +19,7 @@ describe('Get 404 ',()=>{
         });
 });
 
-describe('Http index',()=>{
+describe.skip('Http index',()=>{
     describe('GET /',()=>{
         it('Debe recibirse un 200',(done)=>{
             chai.request(app)

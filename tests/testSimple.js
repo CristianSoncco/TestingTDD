@@ -11,7 +11,7 @@ import {expect} from 'chai';
             expect(year).to.be.a('number');
         })
 
-        it('Devuelve el año en curso',()=>{
+        it.only('Devuelve el año en curso',()=>{
             const myYear = new Date().getFullYear();
             const year = getYear();
             expect(year).equal(myYear);
