@@ -22,6 +22,7 @@ import {expect} from 'chai';
             expect(year).to.be.most(myYear+1);
             expect(year).to.be.least(myYear-1);
             expect(year).to.be.within(1970,2100);
+            expect(year).to.be.NaN;
         })   
     });
         
@@ -39,4 +40,20 @@ import {expect} from 'chai';
         }) 
     });  
     
+    describe('Test tipos de datos',()=>{
+        it('Comparando tipos',()=>{
+            const obj = {};
+            expect(obj).to.be.a('Object');
+            expect(obj).to.be.a('Array');
+            let _null;
+            expect(_null).to.be.undefined;
+            _null=null;
+            expect(_null).to.be.null;
+        })
+
+
+    });  
+
+
+
  });
