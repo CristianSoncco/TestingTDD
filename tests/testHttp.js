@@ -1,7 +1,8 @@
 import chai from 'chai';
 import {expect} from 'chai';
-import {app} from '../app';
 import chaiHttp from 'chai-http';
+// import {app} from '../app';
+const app = require('C:/Users/Usuario/codes/js/archivos_base_javascript_tdd/archivos iniciales/app.js');
 
 chai.use(chaiHttp);
 chai.should();
