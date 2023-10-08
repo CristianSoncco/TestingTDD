@@ -7,19 +7,16 @@ import IndexController from '../controllers/indexController';
  describe('Helpers',()=>{
     //testeamos el método getYear
     describe.skip('Test getYear function',()=>{
+        const myYear = new Date().getFullYear();
+        const year = getYear();
         it('Devuelve un número',()=>{
-            const year = getYear();
             expect(year).to.be.a('number');
         })
 
         it('Devuelve el año en curso',()=>{
-            const myYear = new Date().getFullYear();
-            const year = getYear();
             expect(year).equal(myYear);
         })        
         it('Otras comparaciones',()=>{
-            const myYear = new Date().getFullYear();
-            const year = getYear();
             expect(year).to.be.most(myYear+1);
             expect(year).to.be.least(myYear-1);
             expect(year).to.be.within(1970,2100);
@@ -29,13 +26,12 @@ import IndexController from '../controllers/indexController';
         
 
     describe('Test getHola function',()=>{
+        const saludo = getHola();
         it('Devuelve un string',()=>{
-            const saludo = getHola();
             expect(saludo).to.be.a('string');
         })
 
         it('Devuelve un hola.',()=>{
-            const saludo = getHola();
             expect(saludo).to.have.string('Hola');
             expect(saludo).to.not.have.string('Adios');
         }) 
