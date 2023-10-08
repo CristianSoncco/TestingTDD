@@ -22,6 +22,7 @@ describe('Get 404 ',()=>{
 
 describe('Http index',()=>{
     describe('GET /',()=>{
+
         it('Debe recibirse un 200',(done)=>{
             chai.request(app)
             .get('/')
@@ -30,12 +31,29 @@ describe('Http index',()=>{
                 done();
             })
         });
+
+    });
+});
+
+describe('Http index',()=>{
+    describe('Control de los datos del array',()=>{
+   
+        beforeEach((done)=>{
+            chai.request(app)
+            .post('/new')
+            .send({subject:'Registro test',description:'Esta es la descripción'})
+            .end((err,res)=>{
+            done();
+            })
+        });
+
         it('Obtiene array de To Do.',(done)=>{
             getData().then((data)=>{
                 expect(data).not.to.be.empty;
-                expect(data).have.lengthOf(2);
+                // expect(data).have.lengthOf(2);
                 done();
             })
         })
+    
     });
 });

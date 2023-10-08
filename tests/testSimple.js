@@ -9,13 +9,13 @@ import IndexController from '../controllers/indexController';
     describe('Test getYear function',()=>{
         let myYear;
         let year;
-        beforeEach(()=>{
+        before(()=>{
             console.log('Cargando valores.');
             myYear = new Date().getFullYear();
             year = getYear();
         });
         after(()=>{
-            console.log('Ejeucanto after.');
+            console.log('Ejecutanto after.');
         })
         it('Devuelve un número',()=>{
             expect(year).to.be.a('number');
