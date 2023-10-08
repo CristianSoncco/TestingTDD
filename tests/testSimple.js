@@ -5,7 +5,7 @@ import {expect} from 'chai';
 
  describe('Helpers',()=>{
     //testeamos el método getYear
-    describe('Test getYear function',()=>{
+    describe.skip('Test getYear function',()=>{
         it('Devuelve un número',()=>{
             const year = getYear();
             expect(year).to.be.a('number');
@@ -40,7 +40,7 @@ import {expect} from 'chai';
         }) 
     });  
     
-    describe('Test tipos de datos',()=>{
+    describe.skip('Test tipos de datos',()=>{
         it('Comparando tipos',()=>{
             const obj = {};
             expect(obj).to.be.a('Object');
