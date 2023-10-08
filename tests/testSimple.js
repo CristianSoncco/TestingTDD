@@ -69,6 +69,23 @@ import IndexController from '../controllers/indexController';
         })
 
 
+        it('Comparando errores',()=>{
+            const generarError=()=>{
+                throw new TypeError('Error en BD');
+            }
+            expect(generarError).to.throw();//hubo throw    
+            expect(generarError).to.throw(TypeError);//tipo de objeto
+            expect(generarError).to.throw('BD');//contenga   
+            
+            const error= TypeError('Error BD');
+            error.code=500;
+            const generarError2=()=>{
+                throw error;
+            }
+            expect(generarError2).to.throw(error);
+            expect(generarError2).to.throw(TypeError).with.property('code',500);
 
+
+        })
     });  
  });
