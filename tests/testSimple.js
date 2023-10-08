@@ -6,9 +6,17 @@ import IndexController from '../controllers/indexController';
 
  describe('Helpers',()=>{
     //testeamos el método getYear
-    describe.skip('Test getYear function',()=>{
-        const myYear = new Date().getFullYear();
-        const year = getYear();
+    describe('Test getYear function',()=>{
+        let myYear;
+        let year;
+        beforeEach(()=>{
+            console.log('Cargando valores.');
+            myYear = new Date().getFullYear();
+            year = getYear();
+        });
+        after(()=>{
+            console.log('Ejeucanto after.');
+        })
         it('Devuelve un número',()=>{
             expect(year).to.be.a('number');
         })
@@ -20,7 +28,7 @@ import IndexController from '../controllers/indexController';
             expect(year).to.be.most(myYear+1);
             expect(year).to.be.least(myYear-1);
             expect(year).to.be.within(1970,2100);
-            expect(year).to.be.NaN;
+            expect(year).not.to.be.NaN;
         })   
     });
         
