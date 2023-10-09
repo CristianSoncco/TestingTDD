@@ -51,10 +51,12 @@ app.use(function(err, req, res, next) {
   res.render('error', err);
 });
 
-app.listen(3003, function() {
+const serve= app.listen(3003, function() {
   console.log('Aplicación ejemplo, escuchando el puerto 3003!');
 });
 
-module.exports = app;
-
+module.exports = {
+  app:app,
+  serve:serve,
+};
 

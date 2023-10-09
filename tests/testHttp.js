@@ -1,8 +1,8 @@
 import chai from 'chai';
 import {expect} from 'chai';
 import chaiHttp from 'chai-http';
-// import {app} from '../app';
-const app = require('C:/Users/Usuario/codes/js/archivos_base_javascript_tdd/archivos iniciales/app.js');
+import {app,serve} from '../app';
+//const app = require('C:/Users/Usuario/codes/js/archivos_base_javascript_tdd/archivos iniciales/app.js');
 import { getData } from '../controllers/indexController';
 import { deleteItem } from '../controllers/deleteController';
 
@@ -32,11 +32,14 @@ describe('Http index',()=>{
                 done();
             })
         });
-
     });
 });
 
 describe('Http index',()=>{
+    after((done)=>{
+        serve.close();
+        done();
+    })
     describe('Control de los datos del array',()=>{
         let lastId;
         beforeEach((done)=>{
