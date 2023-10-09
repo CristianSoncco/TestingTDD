@@ -4,6 +4,7 @@ import chaiHttp from 'chai-http';
 // import {app} from '../app';
 const app = require('C:/Users/Usuario/codes/js/archivos_base_javascript_tdd/archivos iniciales/app.js');
 import { getData } from '../controllers/indexController';
+import { deleteItem } from '../controllers/deleteController';
 
 chai.use(chaiHttp);
 chai.should();
@@ -37,7 +38,7 @@ describe('Http index',()=>{
 
 describe('Http index',()=>{
     describe('Control de los datos del array',()=>{
-   
+        let lastId;
         beforeEach((done)=>{
             chai.request(app)
             .post('/new')
@@ -47,10 +48,18 @@ describe('Http index',()=>{
             })
         });
 
+        afterEach((done)=>{
+            chai.request(app)
+            deleteItem(lastId).then(()=>{
+            done();
+            })
+        });
+
         it('Obtiene array de To Do.',(done)=>{
             getData().then((data)=>{
                 expect(data).not.to.be.empty;
                 // expect(data).have.lengthOf(2);
+                lastId = data[data.length-1].id;
                 done();
             })
         })

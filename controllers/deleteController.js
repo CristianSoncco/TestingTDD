@@ -2,6 +2,17 @@
 
 import connection from './db';
 
+
+
+export const deleteItem=(id)=>{
+  return new Promise((resolve)=>{
+    connection.query('DELETE FROM todos WHERE id = ?', [id], function(error, results, fields) {
+      resolve(results);
+  });
+})
+}
+
+
 class DeleteController {
   // Get all students
   static getDelete(req, res) {
@@ -13,10 +24,10 @@ class DeleteController {
     const description = req.body.description;
     if (req.query.id) {
       console.log('LLEGA', req.query.id);
-      connection.query('DELETE FROM todos WHERE id = ?', [req.query.id], function(error, results, fields) {
-        console.log('Eliminado ToDo:', results);
+      deleteItem([req.query.id]).then(()=>{
+        console.log('Eliminado ToDo.');
         res.redirect('/');
-      });
+      })
     } else {
       res.render('delete', { name: 'ToDos', id: req.query.id });
     }
